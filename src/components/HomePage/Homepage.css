@@ -16,8 +16,7 @@
         padding:0px;
     }
     .home-image{
-            width:100px;
-            height:30px;
+            display:none
     }
     
 }

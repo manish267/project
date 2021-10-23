@@ -36,7 +36,15 @@ const NavbarTop = () => {
             </Nav>
 
     {loginStatus && <>
-    <Link style={{textDecoration:'none',color:'#fff'}} to='/postjob'>
+    <Link style={{textDecoration:'none',color:'#fff',marginRight:'10px'}} to='/jobs'>
+            <Nav.Item style={{textDecoration:'none'}}>
+        <Nav  title="Item">
+          My Jobs
+        </Nav>
+      </Nav.Item>
+      </Link>
+
+      <Link style={{textDecoration:'none',color:'#fff'}} to='/postjob'>
             <Nav.Item style={{textDecoration:'none'}}>
         <Nav  title="Item">
           Post a Job
@@ -44,7 +52,7 @@ const NavbarTop = () => {
       </Nav.Item>
       </Link>
 
-            <NavDropdown  style={{textDecoration:'none',color:'#fff'}} title={loginUser} id="nav-dropdown">
+            <NavDropdown  style={{textDecoration:'none',color:'#fff',outline:'none'}} title={loginUser} id="nav-dropdown">
         <NavDropdown.Item   onClick={logoutHandler} >Logout</NavDropdown.Item>
       </NavDropdown>
       </>

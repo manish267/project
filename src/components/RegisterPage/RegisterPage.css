@@ -1,0 +1,16 @@
+.form .form-responsive{
+    width:50vw !important;
+}
+
+@media screen and (max-width:600px){
+    .container{
+        width:100% !important;
+        padding:20px !important
+    }
+    .form-responsive{
+        width:95% !important;
+        padding:20px !important;
+        border-radius:7px !important;
+        margin-top:"20px"  !important;
+    }
+}

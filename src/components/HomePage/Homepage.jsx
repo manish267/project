@@ -70,7 +70,7 @@ const Homepage = () => {
         <Container>
 
           <h4>Companies Who Trust Us</h4>
-          <div style={{'display':"flex",'justifyContent':"space-between"}}>
+          <div style={{'display':"flex",'justifyContent':"space-between",flexWrap:'wrap'}}>
                 <CompanyComp image="https://uilogos.co/img/logotype/solaytic.png" name="solaytic" />
                 <CompanyComp image="https://uilogos.co/img/logotype/solaytic.png" name="solaytic" />
                 <CompanyComp image="https://uilogos.co/img/logotype/solaytic.png" name="solaytic" />
@@ -79,7 +79,7 @@ const Homepage = () => {
                 
 
           </div>
-          <div style={{'display':"flex","justifyContent":"space-around"}}>
+          <div style={{'display':"flex","justifyContent":"space-around",flexWrap:'wrap'}}>
           <CompanyComp image="https://uilogos.co/img/logotype/solaytic.png" name="solaytic" />
           <CompanyComp image="https://uilogos.co/img/logotype/solaytic.png" name="solaytic" />
           <CompanyComp image="https://uilogos.co/img/logotype/solaytic.png" name="solaytic" />

@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {Container,Button,Form,Row,Col} from 'react-bootstrap';
 import { Link,useHistory } from 'react-router-dom';
 import axios from 'axios';
+import './RegisterPage.css'
 
 const BASE_URL="https://jobs-api.squareboat.info/api/v1"
 
@@ -55,7 +56,7 @@ const RegisterPage = () => {
         <>
         <div style={{'backgroundColor':"#1A253C",height:"200px"}}>
         <Container style={{display:'flex',justifyContent:"center",alignItems:'center',padding:"100px 100px 0px 100px"}}>
-        <div className="form-responsive" style={{width:"40vw",backgroundColor:"#fff",padding:"40px",borderRadius:"20px"}}>
+        <div className="form-responsive" style={{backgroundColor:"#fff",padding:"40px",borderRadius:"20px"}}>
         <h3>SignUp</h3>
         <Form onSubmit={formHandler}>
   <Form.Group className="mb-3" >
