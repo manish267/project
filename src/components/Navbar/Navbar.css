@@ -1,0 +1,12 @@
+.text-white{
+    color:white !important;
+}
+
+.text-white span{
+    color:#43AFFF
+}
+
+.bordered{
+    border:1px solid #43AFFF;
+    padding:10px;
+}

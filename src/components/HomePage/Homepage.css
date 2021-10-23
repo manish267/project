@@ -1,0 +1,23 @@
+
+
+@media screen and (max-width:780px) {
+    .home-container .text-white{
+        padding:0px;
+    }
+    .home-image{
+            width:200px;
+            height:100px;
+    }
+    
+}
+
+@media screen and (max-width:485px) {
+    .home-container .text-white{
+        padding:0px;
+    }
+    .home-image{
+            width:100px;
+            height:30px;
+    }
+    
+}
