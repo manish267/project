@@ -1,25 +1,26 @@
-import React, { useEffect } from "react";
-import { Container,Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Container, Button } from "react-bootstrap";
 import JobCard from "../../utils/JobCard/JobCard";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { jobsActions } from "../../store/jobsSlice";
 import "./JobsPage.css";
-import {Link, useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 const BASE_URL = "https://jobs-api.squareboat.info/api/v1";
 let start = 0;
 let end = 9;
 let resultPerPage = 12;
-
 let jobs = [];
 let nextDisable = false;
 let prevDisable = false;
+// let allJobs=[];
 
 const JobsPage = () => {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
+  const [jobsFetch, setJobsFetch] = useState('');
 
   const queryParams = new URLSearchParams(location.search);
 
@@ -28,7 +29,6 @@ const JobsPage = () => {
     page = +0;
   }
   let token = useSelector((state) => state.loginSlice.loginToken);
-  console.log(token)
   let allJobs = useSelector((state) => state.jobsSlice.allJobs);
 
   useEffect(() => {
@@ -40,14 +40,18 @@ const JobsPage = () => {
         let jobs = res.data.data.data;
         // console.log(jobs);
         dispatch(jobsActions.setJobs(jobs));
+        setJobsFetch(true)
       } catch (e) {
         dispatch(jobsActions.setJobs([]));
+        setJobsFetch(false)
+
       }
     };
 
     fetchJobs();
+
     // eslint-disable-next-line
-  },[]);
+  }, [token,jobsFetch]);
 
   const populateData = () => {
     jobs = [];
@@ -76,6 +80,71 @@ const JobsPage = () => {
   };
 
   populateData();
+  // const location = useLocation();
+  // const history = useHistory();
+  // const dispatch = useDispatch();
+  // const [jobsPage, setJobsPage] = useState([]);
+
+  // const queryParams = new URLSearchParams(location.search);
+
+  // let page = queryParams.get("page");
+  // if (page === null) {
+  //   page = +0;
+  // }
+
+  // let token = useSelector((state) => state.loginSlice.loginToken);
+  // console.log(token)
+  //   allJobs = useSelector((state) => state.jobsSlice.allJobs);
+
+  // // console.log(allJobs)
+
+  // const fetchJobs = async () => {
+  //   try {
+  //       const res = await axios.get(`${BASE_URL}/recruiters/jobs`, {
+  //         headers: { Authorization: `${token}` },
+  //       });
+  //       let jobs = res.data.data.data;
+  //       // console.log(jobs);
+  //       dispatch(jobsActions.setJobs(jobs));
+
+  //     } catch (e) {
+  //       dispatch(jobsActions.setJobs([]));
+  //     }
+  //   };
+
+  //   const populateData = () => {
+  //     jobs = [];
+  //     start = +page * resultPerPage;
+  //     end = parseInt(+page + 1) * resultPerPage - 1;
+  //     if (end > allJobs.length) {
+  //       end = allJobs.length - 1;
+  //     }
+  //     if (end <= allJobs.length) {
+  //       nextDisable = false;
+  //     }
+
+  //     if (end === allJobs.length - 1) {
+  //       nextDisable = true;
+  //     }
+
+  //     if (start > 0) {
+  //       prevDisable = false;
+  //     } else if (+page === 0 || +start === 0) {
+  //       prevDisable = true;
+  //     }
+
+  //     for (let i = start; i <= end; i++) {
+  //       jobs.push(allJobs[i]);
+  //     }
+  //   };
+  //   useEffect(()=>{
+  //     fetchJobs();
+
+  //     populateData();
+  //     console.log('useEffect')
+
+  //     // setJobsPage(prevState=>[prevState,...jobs]);
+  //     },[])
 
   function nextPage() {
     history.push("/jobs?page=" + parseInt(+page + 1));
@@ -84,7 +153,6 @@ const JobsPage = () => {
   function prevPage() {
     history.push("/jobs?page=" + parseInt(page - 1));
   }
-
 
   return (
     <>
@@ -132,7 +200,7 @@ const JobsPage = () => {
                 <button onClick={prevPage} disabled={prevDisable}>
                   Prev
                 </button>
-                <span style={{ opacity: 1,margin:'10px' }}>{+page + 1}</span>
+                <span style={{ opacity: 1, margin: "10px" }}>{+page + 1}</span>
                 <button onClick={nextPage} disabled={nextDisable}>
                   Next
                 </button>
@@ -142,19 +210,30 @@ const JobsPage = () => {
         )}
       </div>
 
-      {allJobs.length === 0 && <div style={{width:'100vw',background:'#D9EFFF',height:'66.8vh'}}>
-
-      <div style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
-      
-      <img style={{height:'170px',marginBottom:'16px'}} src="https://icon-library.com/images/file-icon-image/file-icon-image-22.jpg"  alt="fileIcon" />
-      <p>Your Posted jobs will appear here</p>
-      <Link to="postjob">
-      <Button>Post a Job</Button>
-      </Link>
-      
-      </div>
-
-      </div>}
+      {allJobs.length === 0 && (
+        <div
+          style={{ width: "100vw", background: "#D9EFFF", height: "66.8vh" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <img
+              style={{ height: "170px", marginBottom: "16px" }}
+              src="https://icon-library.com/images/file-icon-image/file-icon-image-22.jpg"
+              alt="fileIcon"
+            />
+            <p>Your Posted jobs will appear here</p>
+            <Link to="postjob">
+              <Button>Post a Job</Button>
+            </Link>
+          </div>
+        </div>
+      )}
     </>
   );
 };

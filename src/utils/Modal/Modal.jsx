@@ -6,7 +6,7 @@ import ApplicantCard from "../ApplicantCard/ApplicantCard";
 
 
 const ModalOverlay = ({show,onHide,id}) => {
-  console.log(id)
+  // console.log(id)
   return (
     <div >
        <div style={{width:'50%'}}>

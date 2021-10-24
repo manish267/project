@@ -11,11 +11,13 @@ const NavbarTop = () => {
 
   const loginUser=useSelector(state=>state.loginSlice.loginUser).toUpperCase()
   const loginStatus=useSelector(state=>state.loginSlice.loggedIn)
+  // let token=useSelector(state=>state.loginSlice.loginToken)
+  // console.log(token)
 
   const logoutHandler=()=>{
     dispatch(loginActions.setLoggedInStatus(false))
     dispatch(loginActions.setLoginUser({userName:''}))
-    dispatch(loginActions.setToken(''))
+    dispatch(loginActions.setToken(""));
     history.push('/')
   }
 

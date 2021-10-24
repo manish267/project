@@ -19,6 +19,9 @@ const loginSlice=createSlice({
         },
         setToken(state,action){
             state.loginToken=action.payload
+        },
+        removeToken(state){
+            state.loginToken='';
         }
 
 

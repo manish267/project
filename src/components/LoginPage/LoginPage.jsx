@@ -49,7 +49,7 @@ const LoginPage = () => {
         //  if(!res){
         //    setLoginValid(false)
         //  }
-         if(res.data.code===200){
+         if(res.data){
            dispatch(loginActions.setLoggedInStatus(true))
            dispatch(loginActions.setLoginUser({userName:res.data.data.name}));
            dispatch(loginActions.setToken(res.data.data.token));
