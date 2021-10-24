@@ -3,8 +3,10 @@ import "./Homepage.css";
 import { Button, Container, Image } from "react-bootstrap";
 import CardComp from "../../utils/Card/CardComp";
 import CompanyComp from "../../utils/CompanyComp/CompanyComp";
+import {Link} from 'react-router-dom';
 
 const Homepage = () => {
+  
   return (
     <>
       <div style={{ backgroundColor: "#1A253C", height: "350px" }}>
@@ -28,9 +30,11 @@ const Homepage = () => {
                 Jobs
               </span>
             </div>
+            <Link to='/login'>
             <Button variant="primary" style={{ marginLeft: "45px" }}>
               Get Started
             </Button>
+            </Link>
           </div>
           <Image
             className="home-image"
@@ -45,14 +49,14 @@ const Homepage = () => {
         </Container>
       </div>
 
-      <div style={{ backgroundColor: "#43AFFF33" }}>
+      <div style={{ backgroundColor: "#557DA526" }}>
         <Container
           bg="primary"
           style={{ paddingTop: "70px", paddingBottom: "60px" }}
         >
           <h3 style={{ color: "#303F60" }}>Why Us</h3>
 
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between homeCard">
             <CardComp
               title="Get More Visibility"
               description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"

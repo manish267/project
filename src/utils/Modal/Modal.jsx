@@ -1,13 +1,65 @@
+
+
+import React from 'react';
+import {Modal} from 'react-bootstrap';
+import ApplicantCard from "../ApplicantCard/ApplicantCard";
+
+
+const ModalOverlay = ({show,onHide,id}) => {
+  console.log(id)
+  return (
+    <div >
+       <div style={{width:'50%'}}>
+       <Modal show={show} onHide={onHide}>
+        <Modal.Header closeButton>
+          <Modal.Title style={{borderBotoom:'1px solid #43AFFF33'}}>Applicants for this job</Modal.Title>
+        </Modal.Header>
+        
+        <div style={{width:'95%',margin:'0 auto'}}>
+
+        <h5>Total Applicants</h5>
+        </div>
+
+        <div className="modal-overlay" style={{width:"95%",overflowY:'auto',display:'flex',justifyContent:'space-between',flexDirection:'row',flexWrap:'wrap',margin:'0  auto'
+        }}>
+        <ApplicantCard />
+        <ApplicantCard />
+        <ApplicantCard />
+        <ApplicantCard />
+        <ApplicantCard />
+        </div>
+        {/*
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          
+          
+        </Modal.Footer> */}
+      </Modal>
+        </div>
+    </div>
+  )
+}
+
+export default ModalOverlay
+
+
+
+
+
+
+
+/*
 import React from "react";
 import ReactDom from "react-dom";
 import ApplicantCard from "../ApplicantCard/ApplicantCard";
 
 const MODAL_STYLES = {
-  position: 'absolute',
-  top:'10%',
+  position: 'relative',
+  // top:'50%',
+  // left:'50%',
 //   top: '50%',
 //   left: '50%',
-//   transform: 'translate(-50%, -50%)',
+  // transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
 //   padding: '50px',
   zIndex: 1001,
@@ -15,13 +67,17 @@ const MODAL_STYLES = {
 }
 
 const OVERLAY_STYLES = {
-  position: 'absolute',
+  position: 'fixed',
   top: 0,
   left: 0,
-  height:'100vh',
-  width:'100vw',
-  backgroundColor: 'rgba(0, 0, 0, .7)',
-  zIndex: 1000
+  height:'auto',
+  width:'auto',
+  backgroundColor: '#000',
+  opacity:1,
+  zIndex: 1000,
+  display:'flex',
+  justifyContent:'center',
+  alignItems:"center"
 }
 
 function Modal({ open, children, onClose }) {
@@ -46,11 +102,11 @@ function Modal({ open, children, onClose }) {
       <div style={MODAL_STYLES}>
         <div
           style={{
-            width: "100%",
+            width: "70%",
             display: "flex",
             justifyContent: "space-between",
             borderBottom: "1px solid #43AFFF33",
-            marginBottom: "10px",
+            marginBottom: "0 auto",
           }}
         >
           <h4>Applicants for this job</h4>
@@ -70,9 +126,10 @@ function Modal({ open, children, onClose }) {
             flexWrap: "wrap",
           }}
         >
-          <ApplicantCard />
-          <ApplicantCard />
-          <ApplicantCard />
+          {/* <ApplicantCard /> 
+          {/* <ApplicantCard />
+          <ApplicantCard /> 
+          /*
         </div>
       </div>
     </>,
@@ -81,3 +138,6 @@ function Modal({ open, children, onClose }) {
 }
 
 export default Modal;
+
+
+*/

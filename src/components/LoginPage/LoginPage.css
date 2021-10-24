@@ -1,8 +1,8 @@
-.form .form-responsive{
-    width:50vw !important;
+.form-responsive{
+    width:45vw !important;
 }
 
-@media screen and (max-width:600px){
+@media screen and (max-width:850px){
     .container{
         width:100% !important;
         padding:20px !important

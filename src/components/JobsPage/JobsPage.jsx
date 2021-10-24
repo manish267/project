@@ -28,6 +28,7 @@ const JobsPage = () => {
     page = +0;
   }
   let token = useSelector((state) => state.loginSlice.loginToken);
+  console.log(token)
   let allJobs = useSelector((state) => state.jobsSlice.allJobs);
 
   useEffect(() => {
@@ -84,6 +85,7 @@ const JobsPage = () => {
     history.push("/jobs?page=" + parseInt(page - 1));
   }
 
+
   return (
     <>
       <div style={{ backgroundColor: "#1A253C", height: "150px" }}>
@@ -111,6 +113,7 @@ const JobsPage = () => {
               {jobs.map((el) => (
                 <JobCard
                   key={el.id}
+                  id={el.id}
                   title={el.title}
                   description={el.description}
                   location={el.location}
@@ -129,7 +132,7 @@ const JobsPage = () => {
                 <button onClick={prevPage} disabled={prevDisable}>
                   Prev
                 </button>
-                <span style={{ opacity: 1 }}>{+page + 1}</span>
+                <span style={{ opacity: 1,margin:'10px' }}>{+page + 1}</span>
                 <button onClick={nextPage} disabled={nextDisable}>
                   Next
                 </button>
@@ -143,7 +146,7 @@ const JobsPage = () => {
 
       <div style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
       
-      <img style={{height:'170px',width:'170px'}} src="https://cdn.icon-icons.com/icons2/2633/PNG/512/document_file_document_icon_159190.png"  alt="fileIcon"></img>
+      <img style={{height:'170px',marginBottom:'16px'}} src="https://icon-library.com/images/file-icon-image/file-icon-image-22.jpg"  alt="fileIcon" />
       <p>Your Posted jobs will appear here</p>
       <Link to="postjob">
       <Button>Post a Job</Button>

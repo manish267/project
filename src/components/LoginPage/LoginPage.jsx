@@ -3,32 +3,39 @@ import { Container,Form,Button } from 'react-bootstrap';
 import { Link,useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { loginActions } from '../../store/loginSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import './LoginPage.css'
 
 const BASE_URL="https://jobs-api.squareboat.info/api/v1"
 
 const LoginPage = () => {
 
+  const loginStatus=useSelector(state=>state.loginSlice.loggedIn)
+
+
    const dispatch = useDispatch();
   const history=useHistory();
 
+  if(loginStatus){
+    history.push('/jobs')
+  }
+
   const [email, setEmail] = useState('')
-  const [emailValid,setEmailValid]=useState(true);
+  // const [emailValid,setEmailValid]=useState(true);
   const [password, setPassword] = useState('')
-  const [passwordValid,setPasswordValid]=useState(true);
+  // const [passwordValid,setPasswordValid]=useState(true);
   // const [loginValid, setLoginValid] = useState(true)
-  // const [errorMsg, setErrorMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
 
   const loginHandler=(e)=>{
     e.preventDefault();
 
-    email !=='' ? setEmailValid(true) : setEmailValid(false)
-   password !=='' || password.length >3 ? setPasswordValid(true) : setPasswordValid(false);
-   console.log(emailValid)
-   console.log(passwordValid)
+  //   email.length >4 ? setEmailValid(true) : setEmailValid(false)
+  //  password.length>4 ? setPasswordValid(true) : setPasswordValid(false);
+  //  console.log(emailValid)
+  //  console.log(passwordValid)
 
-    // if(emailValid && passwordValid) return;
+    // if(!emailValid) return;
       
       let data={
         email:email,
@@ -52,7 +59,7 @@ const LoginPage = () => {
        }catch(e){
         //  setEmailValid(true);
         //  setPasswordValid(true)
-        // setErrorMsg('Email or Password is Wrong')
+        setErrorMsg('Email or Password is Wrong')
        }
 
       }
@@ -72,18 +79,21 @@ const LoginPage = () => {
         <Form onSubmit={loginHandler}>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter email" />
-    {!emailValid && <Form.Text style={{color:'red'}} className="text">
+    <Form.Control type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter email" required/>
+    {/* {!emailValid && <Form.Text style={{color:'red'}} className="text">
       The Field is required.
-    </Form.Text>}
+    </Form.Text>} */}
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
   <Link to="/forget-password" style={{float:'right',textDecoration:"none"}} >Forgot Your  Password?</Link>
-    <Form.Control  value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Password" />
-    {!passwordValid && <Form.Text style={{color:'red'}} className="text">
+    <Form.Control  value={password} onChange={(e)=>setPassword(e.target.value)} type="password" placeholder="Password" required/>
+    {/* {!passwordValid && <Form.Text style={{color:'red'}} className="text">
       The Field is required.
+    </Form.Text>} */}
+    {errorMsg.length >3 && <Form.Text style={{color:'red'}} className="text">
+      {errorMsg}
     </Form.Text>}
    
   </Form.Group>

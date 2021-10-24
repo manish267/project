@@ -1,11 +1,20 @@
 import React,{useState} from "react";
 import { Card } from "react-bootstrap";
 // import ApplicantCard from "../ApplicantCard/ApplicantCard";
-// import Modal from "../Modal/Modal";
+import ModalOverlay from "../Modal/Modal";
 
 const JobCard = (props) => {
+  // console.log(props.id)
   // eslint-disable-next-line 
-     const [isOpen, setIsOpen] = useState()
+     const [show, setShow] = useState()
+
+     const handleShow=()=>{
+      setShow(true)
+     }
+
+     const handleClose=()=>{
+      setShow(false)
+     }
   return (
     <>
       <Card style={{ width: "16rem",fontSize:'14px',marginBottom:"20px" }}>
@@ -19,13 +28,13 @@ const JobCard = (props) => {
           <img style={{height:'20px'}} src="https://www.iconpacks.net/icons/2/free-location-icon-2955-thumb.png" alt="location"/>
           <p >{props.location}</p>
             </div>
-          <button onClick={()=>setIsOpen(true)} style={{border:'none',color:'#000',background:'#43AFFF33'}} open={true}>View Applications</button>
+          <button onClick={handleShow} style={{border:'none',color:'#000',background:'#43AFFF33'}} open={true}>View Applications</button>
           </div>
         </Card.Body>
       </Card>
-            {/* <Modal open={isOpen} onClose={()=>setIsOpen(false)}>
+            <ModalOverlay id={props.id} show={show} onHide={handleClose}>
               
-          </Modal> */}
+          </ModalOverlay>
     </>
   );
 };

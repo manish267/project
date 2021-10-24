@@ -1,18 +1,23 @@
 import React from 'react';
-import {Card,Button} from 'react-bootstrap'
+import {Card} from 'react-bootstrap'
 
 const ApplicantCard = () => {
     return (
-        <div style={{width:"45%",justifySelf:'space-between'}}>
+        <div className="modal-card" style={{width:"50%",justifyContent:'space-between'}}>
         <Card style={{ width:'auto',margin:"20px"}}>
-  <Card.Img style={{height:'40px'}} variant="top" src="https://ih1.redbubble.net/image.421230716.2120/flat,750x,075,f-pad,750x1000,f8f8f8.u3.jpg" />
   <Card.Body>
-    <Card.Title>Card Title</Card.Title>
+  <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+  <img style={{height:'35px'}} src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" alt ="userPhoto"/>
+      <div>
+    <p style={{padding:'0',margin:'0'}}>Manish Yadav</p>
+    <p>m@gmail.com </p>
+    </div>
+    </div>
+      <br />
+      <p style={{padding:0,margin:0}}>Skills </p>
     <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
+      Reactjs,Nodejs,MongoDb
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
   </Card.Body>
 </Card>
 </div>
