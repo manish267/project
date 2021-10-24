@@ -20,6 +20,7 @@ const RegisterPage = () => {
   const [confirmPasswordValid, setConfirmPasswordValid] = useState(true);
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [skills, setSkills] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
 
 
   const formHandler=(e)=>{
@@ -39,11 +40,18 @@ const RegisterPage = () => {
   }
 
   async function registerUser(){
-    const result=await axios.post(`${BASE_URL}/auth/register`,data
-    )
+    try{
+      
+      const result=await axios.post(`${BASE_URL}/auth/register`,data
+      )
+  
+      if(result.data.success){
+      setErrorMsg("")
 
-    if(result.data.success){
-      history.push('/login')
+        history.push('/login')
+      }
+    }catch(e){
+      setErrorMsg("Error Occurred")
     }
 
 
@@ -104,6 +112,9 @@ const RegisterPage = () => {
   <Form.Group className="mb-3">
     <Form.Label>Skills</Form.Label>
     <Form.Control value={skills} onChange={(e)=>setSkills(e.target.value)} type="text" placeholder="Enter Comma Seperated Skills" />
+      {errorMsg.length >3 && <Form.Text style={{color:'red'}} className="text-error">
+      {errorMsg}
+    </Form.Text>}
   
   </Form.Group>
       <div className="text-center">
