@@ -15,6 +15,7 @@ const NavbarTop = () => {
   const logoutHandler=()=>{
     dispatch(loginActions.setLoggedInStatus(false))
     dispatch(loginActions.setLoginUser({userName:''}))
+    dispatch(loginActions.setToken(''))
     history.push('/')
   }
 
