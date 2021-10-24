@@ -47,7 +47,7 @@ const JobsPage = () => {
 
     fetchJobs();
     // eslint-disable-next-line
-  }, []);
+  });
 
   const populateData = () => {
     jobs = [];
