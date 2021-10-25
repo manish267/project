@@ -167,7 +167,7 @@ const JobsPage = () => {
           <h3 style={{ color: "#fff" }}>Jobs posted by you</h3>
         </Container>
 
-        {allJobs.length > 1 && (
+        {allJobs.length >= 1 && (
           <div style={{ width: "100%" }}>
             <div
               style={{
