@@ -11,12 +11,10 @@ const resetSlice=createSlice({
         setResetToken(state,action){
             // console.log(action.payload.token)
             state.resetToken=action.payload.token;
-            // console.log(state.resetToken)
         }
     }
 })
 
 
-// const {reducer,actions}=resetToken
 export const resetActions=resetSlice.actions;
 export default resetSlice.reducer;

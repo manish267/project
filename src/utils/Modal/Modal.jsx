@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {Modal} from 'react-bootstrap';
+// import ReactDom from 'react-dom';
 import ApplicantCard from "../ApplicantCard/ApplicantCard";
 
 
@@ -42,102 +43,3 @@ const ModalOverlay = ({show,onHide,id}) => {
 
 export default ModalOverlay
 
-
-
-
-
-
-
-/*
-import React from "react";
-import ReactDom from "react-dom";
-import ApplicantCard from "../ApplicantCard/ApplicantCard";
-
-const MODAL_STYLES = {
-  position: 'relative',
-  // top:'50%',
-  // left:'50%',
-//   top: '50%',
-//   left: '50%',
-  // transform: 'translate(-50%, -50%)',
-  backgroundColor: '#FFF',
-//   padding: '50px',
-  zIndex: 1001,
-  overflowY:'auto'
-}
-
-const OVERLAY_STYLES = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  height:'auto',
-  width:'auto',
-  backgroundColor: '#000',
-  opacity:1,
-  zIndex: 1000,
-  display:'flex',
-  justifyContent:'center',
-  alignItems:"center"
-}
-
-function Modal({ open, children, onClose }) {
-//   if (!open) return null;
-
-//   return ReactDom.createPortal(
-//     <>
-//       <div style={OVERLAY_STYLES} />
-//       <div style={MODAL_STYLES}>
-//         <button onClick={onClose}>Close Modal</button>
-//         {children}
-//       </div>
-//     </>,
-//     document.getElementById("portal")
-//   );
-
-  if (!open) return null;
-
-  return ReactDom.createPortal(
-    <>
-      <div style={OVERLAY_STYLES} />
-      <div style={MODAL_STYLES}>
-        <div
-          style={{
-            width: "70%",
-            display: "flex",
-            justifyContent: "space-between",
-            borderBottom: "1px solid #43AFFF33",
-            marginBottom: "0 auto",
-          }}
-        >
-          <h4>Applicants for this job</h4>
-
-          <button style={{ border: "none" }} onClick={onClose}>
-            X
-          </button>
-          {children}
-        </div>
-        <p>Total {} applications</p>
-        <div
-          style={{
-            backgroundColor: "#EDF6FF",
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-evenly",
-            flexWrap: "wrap",
-          }}
-        >
-          {/* <ApplicantCard /> 
-          {/* <ApplicantCard />
-          <ApplicantCard /> 
-          /*
-        </div>
-      </div>
-    </>,
-    document.getElementById("portal")
-  );
-}
-
-export default Modal;
-
-
-*/

@@ -14,7 +14,7 @@ let resultPerPage = 12;
 let jobs = [];
 let nextDisable = false;
 let prevDisable = false;
-// let allJobs=[];
+let i=0;
 
 const JobsPage = () => {
   const location = useLocation();
@@ -49,6 +49,7 @@ const JobsPage = () => {
     };
 
     fetchJobs();
+    console.log("useeffect"+ ++i);
 
     // eslint-disable-next-line
   }, [token,jobsFetch]);
@@ -80,71 +81,7 @@ const JobsPage = () => {
   };
 
   populateData();
-  // const location = useLocation();
-  // const history = useHistory();
-  // const dispatch = useDispatch();
-  // const [jobsPage, setJobsPage] = useState([]);
 
-  // const queryParams = new URLSearchParams(location.search);
-
-  // let page = queryParams.get("page");
-  // if (page === null) {
-  //   page = +0;
-  // }
-
-  // let token = useSelector((state) => state.loginSlice.loginToken);
-  // console.log(token)
-  //   allJobs = useSelector((state) => state.jobsSlice.allJobs);
-
-  // // console.log(allJobs)
-
-  // const fetchJobs = async () => {
-  //   try {
-  //       const res = await axios.get(`${BASE_URL}/recruiters/jobs`, {
-  //         headers: { Authorization: `${token}` },
-  //       });
-  //       let jobs = res.data.data.data;
-  //       // console.log(jobs);
-  //       dispatch(jobsActions.setJobs(jobs));
-
-  //     } catch (e) {
-  //       dispatch(jobsActions.setJobs([]));
-  //     }
-  //   };
-
-  //   const populateData = () => {
-  //     jobs = [];
-  //     start = +page * resultPerPage;
-  //     end = parseInt(+page + 1) * resultPerPage - 1;
-  //     if (end > allJobs.length) {
-  //       end = allJobs.length - 1;
-  //     }
-  //     if (end <= allJobs.length) {
-  //       nextDisable = false;
-  //     }
-
-  //     if (end === allJobs.length - 1) {
-  //       nextDisable = true;
-  //     }
-
-  //     if (start > 0) {
-  //       prevDisable = false;
-  //     } else if (+page === 0 || +start === 0) {
-  //       prevDisable = true;
-  //     }
-
-  //     for (let i = start; i <= end; i++) {
-  //       jobs.push(allJobs[i]);
-  //     }
-  //   };
-  //   useEffect(()=>{
-  //     fetchJobs();
-
-  //     populateData();
-  //     console.log('useEffect')
-
-  //     // setJobsPage(prevState=>[prevState,...jobs]);
-  //     },[])
 
   function nextPage() {
     history.push("/jobs?page=" + parseInt(+page + 1));
@@ -156,6 +93,7 @@ const JobsPage = () => {
 
   return (
     <>
+    {console.log("render"+ ++i)}
       <div style={{ backgroundColor: "#1A253C", height: "150px" }}>
         <Container
           style={{
@@ -228,7 +166,7 @@ const JobsPage = () => {
               alt="fileIcon"
             />
             <p>Your Posted jobs will appear here</p>
-            <Link to="postjob">
+            <Link to="/postjob">
               <Button>Post a Job</Button>
             </Link>
           </div>
