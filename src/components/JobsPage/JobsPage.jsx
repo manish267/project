@@ -14,7 +14,6 @@ let resultPerPage = 12;
 let jobs = [];
 let nextDisable = false;
 let prevDisable = false;
-let i=0;
 
 const JobsPage = () => {
   const location = useLocation();
@@ -49,7 +48,6 @@ const JobsPage = () => {
     };
 
     fetchJobs();
-    console.log("useeffect"+ ++i);
 
     // eslint-disable-next-line
   }, [token,jobsFetch]);
@@ -93,7 +91,6 @@ const JobsPage = () => {
 
   return (
     <>
-    {console.log("render"+ ++i)}
       <div style={{ backgroundColor: "#1A253C", height: "150px" }}>
         <Container
           style={{
